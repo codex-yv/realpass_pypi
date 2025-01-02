@@ -287,9 +287,18 @@ class BasicSecurity:
                             self.pre_num=random.choices(self.numeric, k=self.num)
                             self.end_val=self.max - self.num
                             self.password_list=self.classifier.get(self.premods_default)        
-                            self.pre_password = random.choice(self.password_list[0])
-                            self.final_password = self.pre_password[0:self.end_val] + ''.join(self.pre_num)
-                            self.got_password= self.final_password
+                            for self.row in self.password_list:
+                                for self.value in self.row:
+                                    # print(self.value)
+                                    if len(self.value)>=password_lenght_limit[0] and len(self.value)<=password_lenght_limit[1]:
+                                        self.temp_password_container.append(self.value)
+                            try:       
+                                self.pre_password = random.choice(self.temp_password_container)
+                                self.final_password = self.pre_password[0:self.end_val] + ''.join(self.pre_num)
+                                self.got_password= self.final_password
+                            except IndexError:
+                                print("Can't generate password! Minimize the minimum lenght or try diffrent premods>>")
+                                self.got_password=None
                             
                         
                         # print(self.style_default[0],'10000')
@@ -300,8 +309,11 @@ class BasicSecurity:
                                 # print(self.value)
                                 if len(self.value)>=password_lenght_limit[0] and len(self.value)<=password_lenght_limit[1]:
                                     self.temp_password_container.append(self.value)
-                                    
-                        self.got_password= random.choice(self.temp_password_container)
+                        try:            
+                            self.got_password= random.choice(self.temp_password_container)
+                        except IndexError:
+                            print("Can't generate password! Minimize the minimum lenght or try diffrent premods>>")
+                            self.got_password=None
                     elif self.style_default[0].lower() == 'numeric':
                         self.pre_num_pass=random.choices(self.numeric, k=self.style_default[1])
                         self.got_password= ''.join(self.pre_num_pass)
@@ -335,9 +347,19 @@ class BasicSecurity:
                             self.pre_num=random.choices(self.numeric, k=self.num)
                             self.end_val=self.max - self.num
                             self.password_list=self.classifier.get(self.premods_default)        
-                            self.pre_password = random.choice(self.password_list[0])
-                            self.final_password = self.pre_password[0:self.end_val] + ''.join(self.pre_num)
-                            self.got_password= self.final_password+random.choice(self.special_char)
+                            for self.row in self.password_list:
+                                for self.value in self.row:
+                                    # print(self.value)
+                                    if len(self.value)>=password_lenght_limit[0] and len(self.value)<=password_lenght_limit[1]:
+                                        self.temp_password_container.append(self.value)
+                            try:
+                                self.pre_password = random.choice(self.temp_password_container)
+                                self.final_password = self.pre_password[0:self.end_val] + ''.join(self.pre_num)
+                            
+                                self.got_password= self.final_password+random.choice(self.special_char)
+                            except IndexError:
+                                print("Can't generate password! Minimize the minimum lenght or try diffrent premods>>")
+                                self.got_password=None
                             
                         
                         # print(self.style_default[0],'10000')
@@ -348,8 +370,12 @@ class BasicSecurity:
                                 # print(self.value)
                                 if len(self.value)>=password_lenght_limit[0] and len(self.value)<=password_lenght_limit[1]:
                                     self.temp_password_container.append(self.value)
-                                    
-                        self.got_password= random.choice(self.temp_password_container)+random.choice(self.special_char)
+                        try:
+                            self.got_password= random.choice(self.temp_password_container)+random.choice(self.special_char)
+                        except IndexError:
+                            print("Can't generate password! Minimize the minimum lenght or try diffrent premods>>")
+                            self.got_password=None
+                        
                     elif self.style_default[0].lower() == 'numeric':
                         self.pre_num_pass=random.choices(self.numeric, k=self.style_default[1])
                         self.got_password=''.join(self.pre_num_pass)+random.choice(self.special_char)
