@@ -1,4 +1,4 @@
-licence.md
+license.md
 setup.py
 RealPass/__init__.py
 RealPass.egg-info/PKG-INFO

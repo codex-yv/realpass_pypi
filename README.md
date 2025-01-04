@@ -21,4 +21,15 @@
   <li>Fixed "minimum password length" accuracy= 100%</li>
 
 </ul>
+
+<b>0.3</b><br>
+<a href="https://pypi.org/project/RealPass/0.3/">Click here to get Version 0.3</a>
+<br>
+<b>Features::</b>
+<ul>
+  <li>Added AdvanceSecurity</li>
+  <li>Added 'algorithm1 in AdvanceSecurity'</li>
+  <li>Now use 'package().help()' to view help</li>
+
+</ul>
  

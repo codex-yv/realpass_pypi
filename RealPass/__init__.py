@@ -1,4 +1,5 @@
 import random
+import math
 import numpy as np
 from typing import Literal, Tuple, Union
 
@@ -389,3 +390,145 @@ class BasicSecurity:
         
     def get_password(self):
         return self.got_password
+    
+    
+    
+class AdvanceSecurity:
+    base_algorithm = {1: 'A', 2: 'B', 3: 'C', 4: 'D', 5: 'E', 6: 'F', 7: 'G', 8: 'H', 9: 'I', 10: 'J',
+                 11: 'K', 12: 'L', 13: 'M', 14: 'N', 15: 'O', 16: 'P', 17: 'Q', 18: 'R', 19: 'S', 20: 'T',
+                 21: 'U', 22: 'V', 23: 'W', 24: 'X', 25: 'Y', 26: 'Z'}
+    
+    state_symbol = {
+                'andhra pradesh': 'AP', 'arunachal pradesh': 'AR', 'assam': 'AS', 'bihar': 'BR', 
+                'chhattisgarh': 'CG', 'goa': 'GA', 'gujarat': 'GJ', 'haryana': 'HR', 
+                'himachal pradesh': 'HP', 'jharkhand': 'JH', 'karnataka': 'KA', 'kerala': 'KL', 
+                'madhya pradesh': 'MP', 'maharashtra': 'MH', 'manipur': 'MN', 'meghalaya': 'ML', 
+                'mizoram': 'MZ', 'nagaland': 'NL', 'odisha': 'OD', 'punjab': 'PB', 
+                'rajasthan': 'RJ', 'sikkim': 'SK', 'tamilnadu': 'TN', 'telangana': 'TG', 
+                'tripura': 'TR', 'uttar pradesh': 'UP', 'uttarakhand': 'UK', 'west bengal': 'WB',
+                'andaman and nicobar islands': 'AN', 'chandigarh': 'CH', 'dadra and nagar haveli and daman and diu': 'DN', 
+                'lakshadweep': 'LD', 'delhi': 'DL', 'puducherry': 'PY'}
+    
+    specialchar = ['@', '#', '$', '*']
+    age_default=[12, 21, 20, 18, 16, 60, 30]
+    algorithm_default="algorithm1"
+    
+
+    def __init__(self, username, area_code , state , age =None, algorithm : Literal['algorithm1', 'algorithm2', 'algorithm3', 'algorithm4'] = None):
+        self.age_default = age if age is not None else random.choice(self.age_default)
+        self.algorithm_default = algorithm if algorithm is not None else self.algorithm_default
+        
+        if isinstance(username, str) and len(username)>4:
+            if algorithm == 'algorithm1':
+                self.algorithm1( username)
+            else:
+                print("Notice : The algorithm you requested doesn't exist or under development!")
+        else:
+            raise ValueError("Expected length of username>4.")
+
+    
+    def algorithm1(self, username):
+        if ' ' not in username:
+            self.new_name_str=username
+            self.name_len = len(username)
+            # print(self.name_len)
+        else:
+            self.new_name_str=''
+            self.name_list=list(username)
+            for self.spaces in self.name_list:
+                if self.spaces != ' ':
+                    self.new_name_str = self.new_name_str + self.spaces
+            
+            self.name_len = len(self.new_name_str)
+            # print(self.name_len)
+        
+        self.new_username = self.new_name_str.lower()
+        
+        self.cap_math= (self.name_len*30)/100
+        # print(self.cap_math)
+        self.total_cap = math.floor(self.cap_math) + 1
+        # print(self.total_cap)
+        while True:
+            self.cap_indexing = random.choices(range(0, self.name_len), k=self.total_cap)
+            self.if_duplicate = len(self.cap_indexing) != len(set(self.cap_indexing))
+            if self.if_duplicate is True:
+                continue
+            else:
+                break
+        # print(self.cap_indexing)
+        # print(self.new_username)
+        
+        self.new_username_list = list(self.new_username)
+
+        for self.index in self.cap_indexing:
+            self.new_username_list[self.index] = self.new_username_list[self.index].upper()
+        
+        self.new_username = ''.join(self.new_username_list)
+        
+        # print(self.new_username)
+        
+        self.got_password_adv = self.new_username + str(self.age_default) + random.choice(self.specialchar)
+      
+      
+    def get_password(self):
+        return self.got_password_adv
+        
+        
+class package:
+    def help(self):
+        print("\nFeatures:\n1) BasicSecurity\n2) AdvanceSecurity\n")
+
+        print("Demo : BasicSecurity -->\nvar1 = BasicSecurity(password_lenght_limit=(5,10), style=('alpha',0), special_chars=True, premods='Anime_Characters')")
+        print("passs = var1.get_password()")
+        print("-------------------------------------------------------------------------------\n")
+        print("password_lenght_limit= it accept minimum and maximum length of desired password in tuple format with minimum gap of 4")
+        print("style= ('format',format count)\n\t format have the options:'alpha', 'alphanumeric', 'numeric'\n\t format count: accepts length of digits in alphanumeric and numeric password")
+
+        print("\nExample:")
+        print("If style=('alphanumeric', 3), it means the password will have 3 digits in it, while the rest will be alphabetic characters.")
+        print("\nspecial_chars: A boolean value (True or False) to indicate whether special characters should be allowed in the password.")
+        print("If special_chars=True, the generated password will include special characters.")
+        
+        print("\npremods: This is the category of pre-modified word list to use when generating passwords.")
+        print("Options include:")
+        print("\t'Fruits' - Fruits list for generating passwords")
+        print("\t'Vegetables' - Vegetables list")
+        print("\t'Flowers' - Flowers list")
+        print("\t'Animals' - Animals list")
+        print("\t'Movies' - Movie titles")
+        print("\t'Celebrities' - Celebrity names")
+        print("\t'Anime_Characters' - Anime character names")
+        print("\t'Gaming_ID' - Gaming usernames or IDs")
+        print("Choose the one that suits the desired premod style of your password.")
+        print("\n\nDemo : AdvanceSecurity -->")
+        print("var2 = AdvanceSecurity(username='johnDoe', area_code='1234', state='karnataka', age=25, algorithm='algorithm1')")
+        print("pass_adv = var2.get_password()")
+        print("-------------------------------------------------------------------------------\n")
+
+        print("username: A string that represents the user's username. The length should be greater than 4 characters.")
+        print("  - Example: 'johnDoe' (valid), 'j' (invalid, must be >4 characters).")
+        
+        print("\narea_code: A string representing the area code (e.g., '1234'). It is part of the username-generation process.")
+        print("\nstate: A string representing the state where the user resides. It should be one of the predefined states (e.g., 'karnataka').")
+        print("  - States are matched with abbreviations from the state_symbol dictionary.")
+
+        print("\nage: (Optional) An integer representing the user's age. If not provided, a random age is selected from the predefined default age list.")
+        print("  - Default age choices are: [12, 21, 20, 18, 16, 60, 30].")
+
+        print("\nalgorithm: (Optional) The algorithm used to generate the password. It accepts one of the following:")
+        print("  - 'algorithm1' (default algorithm if none is provided)")
+        print("  - Other algorithms ('algorithm2', 'algorithm3', 'algorithm4') are placeholders and not yet implemented.")
+        print("  - 'algorithm1' generates a password by taking the username, removing spaces, converting it to lowercase, and then applying random uppercase transformations.")
+        print("    The password is further appended with the user's age and a random special character from the predefined set ['@', '#', '$', '*'].")
+
+        print("\nExample of password generation:")
+        print("If the username is 'johnDoe', age is 25, and the selected algorithm is 'algorithm1',")
+        print("the generated password could be something like 'JOHNDOE25@' where 'JOHNDOE' is the username transformed.")
+        
+        print("\nNotes:")
+        print("1) If no algorithm is provided, 'algorithm1' will be used by default.")
+        print("2) If the username contains spaces, they will be removed before processing.")
+        print("3) The number of uppercase characters in the final password is calculated based on the length of the username.")
+        print("4) Ensure that the username is longer than 4 characters; otherwise, a ValueError will be raised.")
+
+        print("\nAdvanced features (algorithms 2, 3, and 4) are placeholders and under development.")
