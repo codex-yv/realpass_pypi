@@ -412,9 +412,7 @@ class AdvanceSecurity:
     specialchar = ['@', '#', '$', '*']
     age_default=[12, 21, 20, 18, 16, 60, 30]
     algorithm_default="algorithm1"
-    
-
-    emoji_list = ['😀', '🎉', '🚀', '✨', '🔥', '🌟', '🍀', '😍', '😎', '🤩']
+    emoji_list = ['😀','🎉','😎','🚀','✨','🔥','🌟','🍀','😍','🤩']
 
     def __init__(self, username, area_code , state , age =None, algorithm : Literal['algorithm1', 'algorithm2', 'algorithm3', 'algorithm4'] = None):
         self.age_default = age if age is not None else random.choice(self.age_default)
@@ -570,7 +568,26 @@ class AdvanceSecurity:
         
         self.got_password_adv = self.new_username_adv + str(self.age_default) + self.state_code +random.choice(self.specialchar)
       
-      
+    def algorithm2(self, username, state):
+
+        self.username_clean = ''.join(username.split()).lower()  
+        self.name_len = len(self.username_clean)
+
+        self.random_caps = ''.join(char.upper() if random.choice([True, False])
+                                    else char for char in self.username_clean)
+        
+    
+        self.encoded_with_emojis = ''.join(random.choice(self.emoji_list) if char in 'aeiou'
+                                           else char for char in self.random_caps)
+        print(self.encoded_with_emojis)
+        
+    
+        state_code = self.state_symbol.get(state.lower(), "XX")
+    
+        self.got_password_adv = (self.encoded_with_emojis+ random.choice(self.emoji_list)+ state_code.upper()
+                                 + str(self.age_default) + random.choice(self.specialchar) )   
+    
+    
     def get_password(self):
         return self.got_password_adv
         
