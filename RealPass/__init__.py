@@ -414,6 +414,8 @@ class AdvanceSecurity:
     algorithm_default="algorithm1"
     
 
+    emoji_list = ['😀', '🎉', '🚀', '✨', '🔥', '🌟', '🍀', '😍', '😎', '🤩']
+
     def __init__(self, username, area_code , state , age =None, algorithm : Literal['algorithm1', 'algorithm2', 'algorithm3', 'algorithm4'] = None):
         self.age_default = age if age is not None else random.choice(self.age_default)
         self.algorithm_default = algorithm if algorithm is not None else self.algorithm_default
@@ -421,6 +423,10 @@ class AdvanceSecurity:
         if isinstance(username, str) and len(username)>4:
             if algorithm == 'algorithm1':
                 self.algorithm1( username)
+            elif algorithm == 'algorithm2':
+                self.algorithm2(username,state) 
+            elif algorithm == 'algorithm3':
+                self.algorithm3(username=username, state=state)
             else:
                 print("Notice : The algorithm you requested doesn't exist or under development!")
         else:
@@ -468,6 +474,101 @@ class AdvanceSecurity:
         # print(self.new_username)
         
         self.got_password_adv = self.new_username + str(self.age_default) + random.choice(self.specialchar)
+        
+    def algorithm2(self, username, state): 
+        
+        '''
+        
+        Algorithm2 is contributed by Pooja Velmurugen for more info : --> package().contributors
+        
+        
+        '''
+
+        self.username_clean = ''.join(username.split()).lower()  # Remove spaces and lowercase
+        self.name_len = len(self.username_clean)
+
+        self.random_caps = ''.join(char.upper() if random.choice([True, False])
+                                    else char for char in self.username_clean)
+        
+    
+        self.encoded_with_emojis = ''.join(random.choice(self.emoji_list) if char in 'aeiou'
+                                           else char for char in self.random_caps)
+        # print(self.encoded_with_emojis)
+        
+    
+        state_code = self.state_symbol.get(state.lower(), "XX")
+    
+        self.got_password_adv = (self.encoded_with_emojis+ random.choice(self.emoji_list)+ state_code.upper()
+                                 + str(self.age_default) + random.choice(self.specialchar) ) 
+      
+    
+    def algorithm3(self, username,state):
+        if ' ' not in username:
+            self.new_name_str = username
+            self.name_len = len(username)
+        else:
+            self.new_name_str = ''
+            self.name_list = list(username)
+            for self.spaces in self.name_list:
+                if self.spaces != ' ':
+                    self.new_name_str = self.new_name_str + self.spaces
+
+            self.name_len = len(self.new_name_str)
+
+        self.user_cap = self.new_name_str.upper()
+        self.user_shape1 = []
+        self.indement = [-2, 2]
+
+        for self.k in self.user_cap:
+            self.letter_num = [k for k, v in self.base_algorithm.items() if v == self.k]
+            self.indement_val = random.choice(self.indement)
+            self.final_indement = self.letter_num[0] + self.indement_val
+
+            # Wrap the final_indement to be within the valid range [1, 26]
+            if self.final_indement <= 0:
+                self.final_indement = 26  # Wrap around to 'Z'
+            elif self.final_indement > 26:
+                self.final_indement = 1  # Wrap around to 'A'
+
+            self.final_indement_val = self.base_algorithm[self.final_indement]
+            self.user_shape1.append(self.final_indement_val)
+
+        # print(''.join(self.user_shape1))
+        self.adv_algo_name = ''.join(self.user_shape1)
+        
+        self.new_username_adv = self.adv_algo_name.lower()
+        
+        self.cap_math= (self.name_len*30)/100
+        # print(self.cap_math)
+        self.total_cap = math.floor(self.cap_math) + 1
+        # print(self.total_cap)
+        while True:
+            self.cap_indexing = random.choices(range(0, self.name_len), k=self.total_cap)
+            self.if_duplicate = len(self.cap_indexing) != len(set(self.cap_indexing))
+            if self.if_duplicate is True:
+                continue
+            else:
+                break
+        # print(self.cap_indexing)
+        # print(self.new_username_adv)
+        
+        self.new_username_list = list(self.new_username_adv)
+
+        for self.index in self.cap_indexing:
+            self.new_username_list[self.index] = self.new_username_list[self.index].upper()
+        
+        self.new_username_adv = ''.join(self.new_username_list)
+        
+        # print(self.new_username_adv)
+        
+        self.state_lower = state.lower()
+
+        try:
+            self.state_code = self.state_symbol[self.state_lower]
+        except (ValueError, KeyError):
+            self.state_code = "MP"
+        
+        self.got_password_adv = self.new_username_adv + str(self.age_default) + self.state_code +random.choice(self.specialchar)
       
       
     def get_password(self):
@@ -531,4 +632,13 @@ class package:
         print("3) The number of uppercase characters in the final password is calculated based on the length of the username.")
         print("4) Ensure that the username is longer than 4 characters; otherwise, a ValueError will be raised.")
 
-        print("\nAdvanced features (algorithms 2, 3, and 4) are placeholders and under development.")
+        print("\nAdvanced features (algorithms 4) is placeholders and under development.")
+    
+    def contributors(self):
+        print("Youraj Verma: \n GitHub Link:https://github.com/codex-yv\n Email:yourajverma960@gmail.com")
+        print("------------------------------------------------------------------------------------")
+        print("Pooja Velmurugen :\n Github Link: https://github.com/Pooja-Velmurugen\n Email: NOT AVAILABLE ")
+        
+        
+        
+package().contributors()

@@ -32,4 +32,13 @@
   <li>Now use 'package().help()' to view help</li>
 
 </ul>
+
+<b>0.4</b><br>
+<a href="https://pypi.org/project/RealPass/0.4/">Click here to get Version 0.4</a>
+<br>
+<b>Features::</b>
+<ul>
+  <li>Added algorithm2 and algorithm3</li>
+  <li>Now use 'package().contributors()' to see the contributors list.</li>
+</ul>
  
