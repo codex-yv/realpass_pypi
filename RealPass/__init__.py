@@ -412,6 +412,8 @@ class AdvanceSecurity:
     specialchar = ['@', '#', '$', '*']
     age_default=[12, 21, 20, 18, 16, 60, 30]
     algorithm_default="algorithm1"
+    
+
     emoji_list = ['😀', '🎉', '🚀', '✨', '🔥', '🌟', '🍀', '😍', '😎', '🤩']
 
     def __init__(self, username, area_code , state , age =None, algorithm : Literal['algorithm1', 'algorithm2', 'algorithm3', 'algorithm4'] = None):
@@ -570,9 +572,9 @@ class AdvanceSecurity:
       
       
     def get_password(self):
-        return self.got_password_adv 
-          
-
+        return self.got_password_adv
+        
+        
 class package:
     def help(self):
         print("\nFeatures:\n1) BasicSecurity\n2) AdvanceSecurity\n")
@@ -639,4 +641,3 @@ class package:
         
         
         
-package().contributors()
