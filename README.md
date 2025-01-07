@@ -42,3 +42,10 @@
   <li>Now use 'package().contributors()' to see the contributors list.</li>
 </ul>
  
+<b>0.5</b><br>
+<a href="https://pypi.org/project/RealPass/0.5/">Click here to get Version 0.5</a>
+<br>
+<b>Fixes::</b>
+<ul>
+  <li>Contributors will be shown when 'package().contributors()' is used </li>
+</ul>
