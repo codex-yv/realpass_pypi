@@ -1,8 +1,8 @@
 license.md
 setup.py
-RealPass/__init__.py
-RealPass.egg-info/PKG-INFO
-RealPass.egg-info/SOURCES.txt
-RealPass.egg-info/dependency_links.txt
-RealPass.egg-info/requires.txt
-RealPass.egg-info/top_level.txt
+realpass.egg-info/PKG-INFO
+realpass.egg-info/SOURCES.txt
+realpass.egg-info/dependency_links.txt
+realpass.egg-info/requires.txt
+realpass.egg-info/top_level.txt
+realpass2/__init__.py
