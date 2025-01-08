@@ -8,13 +8,6 @@
   pip install realpass
 ```
 
-```Python
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
 <b>Step2:</b><img src="Screenshot 2025-01-08 091549.png" ><br>
 
 <b>Step3:</b> Run the code<br>
@@ -31,16 +24,18 @@ lightningwhisper064 <br><br>
   <li>
 To view contributors:
 
-```bash
-  package().contributors()
+```Python
+from realpass2 import*
+package().contributors()
 ```
 
   </li>
   <li>
 To view help:
 
-```bash
-  package().help()
+```Python
+from realpass2 import*
+package().help()
 ```
 
   </li>
