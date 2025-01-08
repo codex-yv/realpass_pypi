@@ -8,12 +8,26 @@
   pip install realpass
 ```
 
-<b>Step2:</b><img src="Screenshot 2025-01-08 091549.png" ><br>
+<b>Step2:</b>
+
+```Python
+from realpass2 import*
+
+passwd = BasicSecurity(password_lenght_limit=(16,25), style=('alphanumeric', 3), premods='Gaming_ID')
+print(passwd.get_password())
+
+```
 
 <b>Step3:</b> Run the code<br>
 <h3>OUTUPT:</h3>
 lightningwhisper064 <br><br>
-<img src="Screenshot 2025-01-08 092509.png" ><br>
+
+```Python
+from realpass2 import*
+adv = AdvanceSecurity(username='John Wick',area_code=802212, age=19,
+                      state='assam', algorithm='algorithm1')
+print(adv.get_password())
+```
 
 ## Version
 
