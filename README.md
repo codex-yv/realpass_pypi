@@ -60,7 +60,7 @@ package().help()
 
 Contributions are always welcome!
 
-Contribution Path:  `realpass_pypi/ realpass2/ init.py` for ways to get started.
+Contribution Path:  `realpass_pypi/ realpass2/ init.py`.
 
 Please adhere to this project's `Contribution Path`.
 <h3 align="left">Connect with me:</h3>
