@@ -2,6 +2,7 @@ import random
 import math
 import numpy as np
 from typing import Literal, Tuple, Union
+from colorama import Fore, Back, Style, init
 
 class BasicSecurity:
     style_list=['AlphaNumeric', 'Alpha', 'Numeric']
@@ -576,68 +577,82 @@ class AdvanceSecurity:
         
         
 class package:
+    def __init__(self):
+        init(autoreset=True)
+
     def help(self):
-        print("\nFeatures:\n1) BasicSecurity\n2) AdvanceSecurity\n")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\nFeatures:")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "1) " + Fore.GREEN + Back.BLACK + Style.NORMAL + "BasicSecurity")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "2) " + Fore.GREEN + Back.BLACK + Style.NORMAL + "AdvanceSecurity\n")
 
-        print("Demo : BasicSecurity -->\nvar1 = BasicSecurity(password_lenght_limit=(5,10), style=('alpha',0), special_chars=True, premods='Anime_Characters')")
-        print("passs = var1.get_password()")
-        print("-------------------------------------------------------------------------------\n")
-        print("password_lenght_limit= it accept minimum and maximum length of desired password in tuple format with minimum gap of 4")
-        print("style= ('format',format count)\n\t format have the options:'alpha', 'alphanumeric', 'numeric'\n\t format count: accepts length of digits in alphanumeric and numeric password")
-
-        print("\nExample:")
-        print("If style=('alphanumeric', 3), it means the password will have 3 digits in it, while the rest will be alphabetic characters.")
-        print("\nspecial_chars: A boolean value (True or False) to indicate whether special characters should be allowed in the password.")
-        print("If special_chars=True, the generated password will include special characters.")
+        print(Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "Demo : BasicSecurity -->")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "var1 = " + Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "BasicSecurity" + Fore.WHITE + Back.BLACK + Style.NORMAL + "(password_lenght_limit=(5,10), style=('alpha',0), special_chars=True, premods='Anime_Characters')")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "passs = " + Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "var1.get_password()" + Fore.WHITE + Back.BLACK + Style.NORMAL)
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "-------------------------------------------------------------------------------\n")
         
-        print("\npremods: This is the category of pre-modified word list to use when generating passwords.")
-        print("Options include:")
-        print("\t'Fruits' - Fruits list for generating passwords")
-        print("\t'Vegetables' - Vegetables list")
-        print("\t'Flowers' - Flowers list")
-        print("\t'Animals' - Animals list")
-        print("\t'Movies' - Movie titles")
-        print("\t'Celebrities' - Celebrity names")
-        print("\t'Anime_Characters' - Anime character names")
-        print("\t'Gaming_ID' - Gaming usernames or IDs")
-        print("Choose the one that suits the desired premod style of your password.")
-        print("\n\nDemo : AdvanceSecurity -->")
-        print("var2 = AdvanceSecurity(username='johnDoe', area_code='1234', state='karnataka', age=25, algorithm='algorithm1')")
-        print("pass_adv = var2.get_password()")
-        print("-------------------------------------------------------------------------------\n")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "password_lenght_limit= " + Fore.WHITE + Back.BLACK + Style.NORMAL + "it accepts minimum and maximum length of desired password in tuple format with minimum gap of 4")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "style= " + Fore.WHITE + Back.BLACK + Style.NORMAL + "('format', format count)\n\t format have the options: " + Fore.CYAN + Back.BLACK + Style.NORMAL + "'alpha', 'alphanumeric', 'numeric'")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "\t format count: accepts length of digits in alphanumeric and numeric password")
 
-        print("username: A string that represents the user's username. The length should be greater than 4 characters.")
-        print("  - Example: 'johnDoe' (valid), 'j' (invalid, must be >4 characters).")
+        print(Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "\nExample:")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "If style=('alphanumeric', 3), it means the password will have 3 digits in it, while the rest will be alphabetic characters.")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "\nspecial_chars: " + Fore.WHITE + Back.BLACK + Style.NORMAL + "A boolean value (True or False) to indicate whether special characters should be allowed in the password.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "If special_chars=True, the generated password will include special characters.")
         
-        print("\narea_code: A string representing the area code (e.g., '1234'). It is part of the username-generation process.")
-        print("\nstate: A string representing the state where the user resides. It should be one of the predefined states (e.g., 'karnataka').")
-        print("  - States are matched with abbreviations from the state_symbol dictionary.")
-
-        print("\nage: (Optional) An integer representing the user's age. If not provided, a random age is selected from the predefined default age list.")
-        print("  - Default age choices are: [12, 21, 20, 18, 16, 60, 30].")
-
-        print("\nalgorithm: (Optional) The algorithm used to generate the password. It accepts one of the following:")
-        print("  - 'algorithm1' (default algorithm if none is provided)")
-        print("  - Other algorithms ('algorithm2', 'algorithm3', 'algorithm4') are placeholders and not yet implemented.")
-        print("  - 'algorithm1' generates a password by taking the username, removing spaces, converting it to lowercase, and then applying random uppercase transformations.")
-        print("    The password is further appended with the user's age and a random special character from the predefined set ['@', '#', '$', '*'].")
-
-        print("\nExample of password generation:")
-        print("If the username is 'johnDoe', age is 25, and the selected algorithm is 'algorithm1',")
-        print("the generated password could be something like 'JOHNDOE25@' where 'JOHNDOE' is the username transformed.")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "\npremods: " + Fore.WHITE + Back.BLACK + Style.NORMAL + "This is the category of pre-modified word list to use when generating passwords.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "Options include:")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\t'Fruits' - Fruits list for generating passwords")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\t'Vegetables' - Vegetables list")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\t'Flowers' - Flowers list")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\t'Animals' - Animals list")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\t'Movies' - Movie titles")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\t'Celebrities' - Celebrity names")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\t'Anime_Characters' - Anime character names")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "\t'Gaming_ID' - Gaming usernames or IDs")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "Choose the one that suits the desired premod style of your password.")
         
-        print("\nNotes:")
-        print("1) If no algorithm is provided, 'algorithm1' will be used by default.")
-        print("2) If the username contains spaces, they will be removed before processing.")
-        print("3) The number of uppercase characters in the final password is calculated based on the length of the username.")
-        print("4) Ensure that the username is longer than 4 characters; otherwise, a ValueError will be raised.")
+        print(Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "\n\nDemo : AdvanceSecurity -->")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "var2 = " + Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "AdvanceSecurity" + Fore.WHITE + Back.BLACK + Style.NORMAL + "(username='johnDoe', area_code='1234', state='karnataka', age=25, algorithm='algorithm1')")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "pass_adv = " + Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "var2.get_password()" + Fore.WHITE + Back.BLACK + Style.NORMAL)
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "-------------------------------------------------------------------------------\n")
 
-        print("\nAdvanced features (algorithms 4) is placeholders and under development.")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "username: " + Fore.WHITE + Back.BLACK + Style.NORMAL + "A string that represents the user's username. The length should be greater than 4 characters.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "  - Example: 'johnDoe' (valid), 'j' (invalid, must be >4 characters).")
+        
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "\narea_code: " + Fore.WHITE + Back.BLACK + Style.NORMAL + "A string representing the area code (e.g., '1234'). It is part of the username-generation process.")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "\nstate: " + Fore.WHITE + Back.BLACK + Style.NORMAL + "A string representing the state where the user resides. It should be one of the predefined states (e.g., 'karnataka').")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "  - States are matched with abbreviations from the state_symbol dictionary.")
+
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "\nage: " + Fore.WHITE + Back.BLACK + Style.NORMAL + "(Optional) An integer representing the user's age. If not provided, a random age is selected from the predefined default age list.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "  - Default age choices are: [12, 21, 20, 18, 16, 60, 30].")
+
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "\nalgorithm: " + Fore.WHITE + Back.BLACK + Style.NORMAL + "(Optional) The algorithm used to generate the password. It accepts one of the following:")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "  - 'algorithm1' " + Fore.WHITE + Back.BLACK + Style.NORMAL + "(default algorithm if none is provided)")
+        print(Fore.CYAN + Back.BLACK + Style.BRIGHT + "  -  algorithms (algorithm4) is placeholder and not yet implemented.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "  - 'algorithm1' generates a password by taking the username, removing spaces, converting it to lowercase, and then applying random uppercase transformations.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "    The password is further appended with the user's age and a random special character from the predefined set ['@', '#', '$', '*'].")
+
+        print(Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "\nExample of password generation:")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "If the username is 'johnDoe', age is 25, and the selected algorithm is 'algorithm1',")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "the generated password could be something like 'JOHNDOE25@' where 'JOHNDOE' is the username transformed.")
+        
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "\nNotes:")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "1) If no algorithm is provided, 'algorithm1' will be used by default.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "2) If the username contains spaces, they will be removed before processing.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "3) The number of uppercase characters in the final password is calculated based on the length of the username.")
+        print(Fore.WHITE + Back.BLACK + Style.NORMAL + "4) Ensure that the username is longer than 4 characters; otherwise, a ValueError will be raised.")
+
+        print(Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "\nAdvanced features (algorithms 4) is placeholder and under development.")
     
     def contributors(self):
-        print("Youraj Verma: \n GitHub Link:https://github.com/codex-yv\n Email:yourajverma960@gmail.com")
-        print("------------------------------------------------------------------------------------")
-        print("Pooja Velmurugen :\n Github Link: https://github.com/Pooja-Velmurugen\n Email: NOT AVAILABLE ")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "Youraj Verma: ")
+        print(Fore.CYAN + Back.BLACK + Style.NORMAL + "GitHub Link:" + Fore.WHITE + Back.BLACK + Style.NORMAL + " https://github.com/codex-yv")
+        print(Fore.CYAN + Back.BLACK + Style.NORMAL + "Email:" + Fore.WHITE + Back.BLACK + Style.NORMAL + " yourajverma960@gmail.com")
+        print(Fore.CYAN + Back.BLACK + Style.NORMAL + "------------------------------------------------------------------------------------")
+        print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "Pooja Velmurugen :")
+        print(Fore.CYAN + Back.BLACK + Style.NORMAL + "GitHub Link:" + Fore.WHITE + Back.BLACK + Style.NORMAL + " https://github.com/Pooja-Velmurugen")
+        print(Fore.CYAN + Back.BLACK + Style.NORMAL + "Email:" + Fore.WHITE + Back.BLACK + Style.NORMAL + " NOT AVAILABLE ")
+
         
         
         
