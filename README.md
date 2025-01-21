@@ -1,15 +1,9 @@
 <h1 align="center">RealPass</h1>
 <h3 align="center"><b>RealPass</b> is a Python package that generates highly secure, realistic passwords with customizable length and complexity.</h3>
 
-<style>
-    .container {
-      text-align: center;
-    }
-  </style>
-
-<div class="container">
+<p align="center">
   <img src="logo.png" alt="before" width="155" height='131'/>
-</div>
+</p>
 
 ![Static Badge](https://img.shields.io/badge/Python-blue)
 
