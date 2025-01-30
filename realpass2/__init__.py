@@ -428,6 +428,8 @@ class AdvanceSecurity:
                 self.algorithm2(username,state) 
             elif algorithm == 'algorithm3':
                 self.algorithm3(username=username, state=state)
+            elif algorithm == 'algorithm4':
+                self.algorithm4(username, state, age)    
             else:
                 print("Notice : The algorithm you requested doesn't exist or under development!")
         else:
@@ -571,7 +573,53 @@ class AdvanceSecurity:
         
         self.got_password_adv = self.new_username_adv + str(self.age_default) + self.state_code +random.choice(self.specialchar)
       
-      
+
+    def algorithm4(self,username,state,age):
+        
+        self.name_cleaned = username.replace(" ", "").upper()
+
+        self.name_unique = ""
+        for char in self.name_cleaned:
+            if char not in self.name_unique:
+                self.name_unique += char
+
+        self.name_sorted = "".join(sorted(self.name_unique))
+
+        self.name_length = len(self.name_sorted)
+        if self.name_length > 1:
+            self.index_25 = math.floor(0.25 * self.name_length)
+            self.index_75 = math.floor(0.75 * self.name_length)
+
+            self.name_list = list(self.name_sorted)
+            self.name_list[self.index_25] = self.name_list[self.index_25].lower()
+            self.name_list[self.index_75] = self.name_list[self.index_75].lower()
+            self.final_name = "".join(self.name_list)
+        else:
+            self.final_name = self.name_sorted
+
+        self.half_length = self.name_length // 2
+        self.final_name = self.final_name[:self.half_length] + self.final_name[self.half_length:][::-1]
+
+               
+        self.random_specialchar = random.choice(self.specialchar)
+
+        self.name_count = len(self.final_name)
+        self.age_increament= age + self.name_count
+
+         
+        self.state_lower = state.lower()
+
+        try:
+            self.state_code = self.state_symbol[self.state_lower]
+        except (ValueError, KeyError):
+            self.state_code = "MP" 
+        
+        #state_code = self.state_symbol.get(state, "XX")  
+        self.state_code_with_age = f"{self.state_code[:1]}{self.age_increament}{self.state_code[1:]}"  
+
+        self.got_password_adv = self.final_name + self.random_specialchar + self.state_code_with_age
+    
+
     def get_password(self):
         return self.got_password_adv
         
