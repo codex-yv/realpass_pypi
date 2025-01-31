@@ -102,6 +102,17 @@ package().contributors()
 
 </ul>
 
+### <b>0.3</b><br>
+
+<a href="https://pypi.org/project/realpass/0.3/">Click here to get Version 0.2</a><br>
+
+### Installation ::
+
+```bash
+  pip install --upgrade realpass
+```
+
+- Added algorithm4 .
 ## Contributing
 
 Contributions are always welcome!
