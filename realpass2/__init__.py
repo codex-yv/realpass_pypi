@@ -574,7 +574,14 @@ class AdvanceSecurity:
         self.got_password_adv = self.new_username_adv + str(self.age_default) + self.state_code +random.choice(self.specialchar)
 
 
-    def algorithm4(self,username,state,age):
+    def algorithm4(self,username,state,age=None):
+        
+        if age is None:
+            age = 18  
+        try:
+            age = int(age)  
+        except ValueError:
+            age = 18  
         
         self.name_cleaned = username.replace(" ", "").upper()
 
@@ -692,6 +699,7 @@ class package:
 
         print(Fore.MAGENTA + Back.BLACK + Style.BRIGHT + "\nAdvanced features (algorithms 4) is placeholder and under development.")
     
+    
     def contributors(self):
         print(Fore.YELLOW + Back.BLACK + Style.BRIGHT + "Youraj Verma: ")
         print(Fore.CYAN + Back.BLACK + Style.NORMAL + "GitHub Link:" + Fore.WHITE + Back.BLACK + Style.NORMAL + " https://github.com/codex-yv")
@@ -701,6 +709,6 @@ class package:
         print(Fore.CYAN + Back.BLACK + Style.NORMAL + "GitHub Link:" + Fore.WHITE + Back.BLACK + Style.NORMAL + " https://github.com/Pooja-Velmurugen")
         print(Fore.CYAN + Back.BLACK + Style.NORMAL + "Email:" + Fore.WHITE + Back.BLACK + Style.NORMAL + " NOT AVAILABLE ")
 
-        
+         
         
         
