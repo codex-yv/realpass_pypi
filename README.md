@@ -104,7 +104,7 @@ package().contributors()
 
 ### <b>0.3</b><br>
 
-<a href="https://pypi.org/project/realpass/0.3/">Click here to get Version 0.2</a><br>
+<a href="https://pypi.org/project/realpass/0.3/">Click here to get Version 0.3</a><br>
 
 ### Installation ::
 
